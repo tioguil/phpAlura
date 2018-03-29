@@ -1,0 +1,25 @@
+.form{
+	padding: 10px;
+}
+
+.table{
+	width: 100%;
+}
+
+textarea{
+	width: 100%;
+}
+
+.incluir{
+	margin-top: 10px;
+	text-align: center;;
+}
+
+
+.divForm{
+
+	text-align: center;
+	max-height: 300px;
+	max-width: 300px;
+}
+
