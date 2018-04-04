@@ -1,5 +1,5 @@
 <?php
-
+include("logica_usuario.php");
  function listaProdutos($conexao){
 
 	$produtos = array();
@@ -43,6 +43,8 @@ function atualizarPedido($conexao, $id, $nome, $preco, $descricao, $categoria_id
 function removerProduto($conexao, $id){
 	$query = "delete from produtos where id = {$id}";
 	mysqli_query($conexao, $query);
-	header("Location: listaProduto.php?removido=true");
+	$_SESSION['success'] = "Produto removido com sucesso!";
+	header("Location: listaProduto.php");
+
 	die();
 }

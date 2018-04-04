@@ -2,18 +2,15 @@
  include("produtoModel.php");
  include("conecta.php");
  include("categoriaModel.php");
+ include("logica_usuario.php");
 
 $produtos = listaProdutos($conexao);
 
 
- if(array_key_exists("removido", $_GET) && $_GET['removido']=='true'){
-?>
- 	<p class="alert-success">Produto apagado com sucesso.</p>
-<?php  	
- }
+if(isset($_SESSION['success'])){ ?>
+		<p class="text-success"> <?=$_SESSION['success'] ?></p>
+<?php unset($_SESSION['success']);}?>
 
-
-?>
 
 	<div class="container">
 		<div >

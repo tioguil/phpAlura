@@ -1,6 +1,7 @@
 <?php
 include("conecta.php");
 include("modelUsuario.php");
+include("logica_usuario.php");
 
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
@@ -10,13 +11,14 @@ var_dump($retorno);
 
 
 if($retorno == null){
-	header("Location: index.php?login=0");
+	$_SESSION['danger'] = "Login ou senha invalido! ";
+	header("Location: index.php");
 
 }else{
-	header("Location: index.php?login=1");
-	setcookie("usuario_logado", $retorno["usuario"]);
-
-
+	$_SESSION['success'] = "Logado com sucesso!";
+	setUsuario($retorno['usuario']);
+	header("Location: index.php?");
+	
 	
 }
 

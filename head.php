@@ -32,4 +32,4 @@
             </div>
         </div><!-- container acaba aqui -->
     </nav>
-	<div class="container">
+	<div class="container" style="text-align: center">

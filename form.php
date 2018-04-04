@@ -1,10 +1,14 @@
 <?php include("head.php"); ?>
 <?php include("categoriaModel.php"); 
 include("conecta.php");
+include("logica_usuario.php");
 
 $lista = listaCategoria($conexao);
 
+verificaUsuario();
 ?>
+
+
 	
 <h3>Adicionar Produto</h3>
 

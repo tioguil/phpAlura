@@ -1,19 +1,31 @@
-<?php include("head.php");?>
-	
+<?php include("head.php");
+include("logica_usuario.php");
+?>
+
+
+
+<?php if(isset($_SESSION['danger'])){ ?>
+		<p class="text-danger"> <?=$_SESSION['danger'] ?></p>
+<?php unset($_SESSION['danger']);}?>
+
+<?php if(isset($_SESSION['success'])){ ?>
+		<p class="text-success"> <?=$_SESSION['success'] ?></p>
+<?php unset($_SESSION['success']);}?>
+
+<?php if(isset($_GET['deslogado']) && $_GET['deslogado'] == true){ ?>
+		<p class="text-success"> Deslogado com sucesso !</p>
+<?php }?>
+
 	<h1>Bem Vindo !</h1>
 
-	<h2>Login</h2>
-	 <?php 
-		if(isset($_GET['login'])){
-			$login =  $_GET['login'];
-			if($login == false){
-				echo "<div class='alert alert-danger' role='alert'> Login ou senha invalidos!</div>";
-			}else{
-				echo "<div class='alert alert-success' role='alert'> Logado com sucesso!</div>";
-			}
-		}
+	<?php if(usuarioEstaLogado()){?>
+	<p class="text-success"> Você esta logado como: <?= getUsuario(); ?> <br>
 
-	?>
+		<a href="logOut.php" class="btn btn-danger"> Deslogar</a>
+
+	<?php	}else{ ?>
+
+	<h2>Login</h2>
 		<form action="login.php" method="POST">
 			<table class="table">
 				<tr>
@@ -33,5 +45,7 @@
 			</table>
 
 		</form>
+
+		<?php } ?>
 
 <?php include("footer.php");?>
