@@ -1,3 +1,3 @@
 <?php
-include("logica_usuario.php");
+require_once("logica_usuario.php");
 logOut();

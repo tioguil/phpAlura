@@ -1,7 +1,6 @@
 <?php
-include("conecta.php");
-include("modelUsuario.php");
-include("logica_usuario.php");
+require_once("modelUsuario.php");
+require_once("logica_usuario.php");
 
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
@@ -17,7 +16,7 @@ if($retorno == null){
 }else{
 	$_SESSION['success'] = "Logado com sucesso!";
 	setUsuario($retorno['usuario']);
-	header("Location: index.php?");
+	header("Location: index.php");
 	
 	
 }

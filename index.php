@@ -2,20 +2,6 @@
 include("logica_usuario.php");
 ?>
 
-
-
-<?php if(isset($_SESSION['danger'])){ ?>
-		<p class="text-danger"> <?=$_SESSION['danger'] ?></p>
-<?php unset($_SESSION['danger']);}?>
-
-<?php if(isset($_SESSION['success'])){ ?>
-		<p class="text-success"> <?=$_SESSION['success'] ?></p>
-<?php unset($_SESSION['success']);}?>
-
-<?php if(isset($_GET['deslogado']) && $_GET['deslogado'] == true){ ?>
-		<p class="text-success"> Deslogado com sucesso !</p>
-<?php }?>
-
 	<h1>Bem Vindo !</h1>
 
 	<?php if(usuarioEstaLogado()){?>

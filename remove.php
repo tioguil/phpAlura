@@ -1,6 +1,7 @@
 <?php
-include("conecta.php");
-include("produtoModel.php");
+require_once("produtoModel.php");
+
+verificaUsuario();
 
 $id = $_POST['id'];
 removerProduto($conexao, $id);

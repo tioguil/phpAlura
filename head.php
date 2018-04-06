@@ -1,3 +1,6 @@
+ <?php include("mostraAlerta.php");
+ error_reporting(E_ALL ^ E_NOTICE);
+  ?>
 <!doctype html>
 <html>
 <head>
@@ -25,11 +28,14 @@
 
                <div>
                 <ul class="nav navbar-nav">
-                     <li><a href="form.php">Adiciona Produto</a></li>
+                     <li><a href="incluirProdudoForm.php">Adiciona Produto</a></li>
                      <li><a href="listaProduto.php">Lista de Produtos</a></li>
-                    <li><a href="sobre.php">Sobre</a></li>
+                    <li><a href="contato.php">Contato</a></li>
                 </ul>
             </div>
         </div><!-- container acaba aqui -->
     </nav>
 	<div class="container" style="text-align: center">
+
+        <?php mostrarAlerta("success"); ?>
+        <?php mostrarAlerta("danger"); ?>
