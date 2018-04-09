@@ -14,13 +14,13 @@ require_once("class/Categoria.php");
 		$produto = new Produto();
 		$categoria = new Categoria();
 		
-		$produto->id =	$produto_array['id'];
-		$produto->nome = $produto_array['nome'];
-		$produto->preco = $produto_array['preco'];
-		$produto->descricao = $produto_array['descricao'];
-		$categoria->nome = $produto_array['categoria_nome'];
-		$produto->categoria = $categoria;
-		$produto->usado = $produto_array['usado'];
+		$produto->setId($produto_array['id']);
+		$produto->setNome($produto_array['nome']);
+		$produto->setPreco($produto_array['preco']);
+		$produto->setDescricao($produto_array['descricao']);
+		$categoria->setNome($produto_array['categoria_nome']);
+		$produto->setCategoria($categoria);
+		$produto->setUsado($produto_array['usado']);
 
 		array_push($produtos, $produto);
 	}
@@ -42,14 +42,14 @@ require_once("class/Categoria.php");
 function atualizarPedido($conexao, Produto $produto){
 
 
-	$query = "update produtos set nome='{$produto->nome}', preco={$produto->preco}, descricao='{$produto->descricao}', categoria_id={$produto->categoria->id}, usado = {$produto->usado} where id = {$produto->id}";
+	$query = "update produtos set nome='{$produto->getNome()}', preco={$produto->getPreco()}, descricao='{$produto->getdescricao()}', categoria_id={$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} where id = {$produto->getId()}";
 	return mysqli_query($conexao, $query);
 
 }
 
  function salvaPedido($conexao, Produto $produto){
 
-	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$produto->nome}', {$produto->preco}, '{$produto->descricao}', {$produto->categoria->id}, {$produto->usado});";
+	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()});";
 	return mysqli_query($conexao, $query);
 
 }

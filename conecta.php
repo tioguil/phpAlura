@@ -1,5 +1,5 @@
 <?php
-$conexao = mysqli_connect('localhost', 'root', 'root', 'fenix');
+$conexao = mysqli_connect('localhost', 'root', '', 'fenix');
 
 if (mysqli_connect_errno())
   {

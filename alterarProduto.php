@@ -7,34 +7,34 @@ require_once("class/Categoria.php");
 $produto = new Produto();
 $categoria = new Categoria();
 
-$categoria->id = $_POST["categoria_id"];
+$categoria->setId($_POST["categoria_id"]);
 
-$produto->nome = $_POST["nome"];
-$produto->preco = $_POST["preco"];
-$produto->descricao = $_POST["descricao"];
-$produto->categoria = $categoria;
-$produto->id = $_POST['id'];
+$produto->setNome($_POST["nome"]);
+$produto->setPreco($_POST["preco"]);
+$produto->setDescricao($_POST["descricao"]);
+$produto->setCategoria($categoria);
+$produto->setId($_POST['id']);
 
 if(array_key_exists('usado', $_POST)){
 
-	$produto->usado = "true";
+	$produto->setUsado("true");
 
 }else{
 
-	$produto->usado = "false";
+	$produto->setUsado("false");
 }
 
 if(atualizarPedido($conexao, $produto)) {
 ?>
 <div class="alert alert-success incluir">
-<span class="text-success"> Produto <?= $produto->nome; ?>, valor: <?= $produto->preco; ?> Atualizado com sucesso! </span>
+<span class="text-success"> Produto <?= $produto->getNome(); ?>, valor: <?= $produto->getPreco(); ?> Atualizado com sucesso! </span>
 
 </div>
 <?php
 } else {
 	$msg = mysqli_error($conexao);
 ?>
-<p class="text-danger">O produto <?= $produto->nome; ?> não foi Atualizado erro: <?= $msg?> </p>
+<p class="text-danger">O produto <?= $produto->getNome(); ?> não foi Atualizado erro: <?= $msg?> </p>
 <?php
 }
 ?>
