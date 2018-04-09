@@ -21,11 +21,11 @@ $mail->Host = 'smtp.gmail.com';
 $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
-$mail->Username = "opinowltda@gmail.com";
-$mail->Password = "nilone123456";
+$mail->Username = "gmail";
+$mail->Password = "123";
 
-$mail->setFrom("opinowltda@gmail.com", "Alura Curso PHP e MySQL");
-$mail->addAddress("opinowltda@gmail.com");
+$mail->setFrom("@gmail.com", "Alura Curso PHP e MySQL");
+$mail->addAddress("@gmail.com");
 $mail->Subject = "Email de contato da loja";
 $mail->msgHTML("<html>de: {$nome}<br/>email: {$email}<br/>mensagem: {$mensagem}</html>");
 $mail->AltBody = "de: {$nome}\nemail:{$email}\nmensagem: {$mensagem}";
