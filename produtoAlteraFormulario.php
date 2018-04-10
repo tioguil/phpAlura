@@ -1,14 +1,17 @@
 <?php require_once("head.php"); ?>
-<?php require_once("categoriaModel.php"); 
-require_once("produtoModel.php");
+<?php
+require_once("logica_usuario.php");
 verificaUsuario();
-$lista = listaCategoria($conexao);
 
-$idProduto = $_GET['id'];
+$produtoDao = new ProdutoDao($conexao);
+$categoriaDao = new CategoriaDao($conexao);
 
-$produto = buscaProduto($conexao, $idProduto);
+$id = $_GET['id'];
+$produto = $produtoDao->buscaProduto($id);
+$categorias = $categoriaDao->listaCategorias();
 
-$usado = $produto['usado'] ? "checked='checked'" : "";
+$selecao_usado = $produto->isUsado() ? "checked='checked'" : "";
+$produto->setUsado($selecao_usado);
  
 ?>
 	

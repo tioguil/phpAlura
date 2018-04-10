@@ -1,20 +1,34 @@
 <?php require_once("head.php"); ?>
-<?php require_once("produtoModel.php") ?>
 <?php 
 
-require_once("class/Produto.php");
-require_once("class/Categoria.php");
+require_once("conecta.php");
 
-$produto = new Produto();
+$tipoProduto = $_POST['tipoProduto'];
+
 $categoria = new Categoria();
+$produtoDao = new ProdutoDao($conexao);
 
+if ($tipoProduto == "Livro") {
+    $produto = new Livro();
+    $produto->setNome($_POST["nome"]);
+	$produto->setPreco($_POST['preco']);
+	$produto->setDescricao($_POST['descricao']);
+	$categoria->setId($_POST['categoria_id']);
+	$produto->setCategoria($categoria);
+	$produto->setIsbn($_POST['isbn']);
+	$produto->setTipoProduto($tipoProduto);
+    $produto->setIsbn($isbn);
+} else {
+    $produto = new Produto();
+    $produto->setNome($_POST["nome"]);
+	$produto->setPreco($_POST['preco']);
+	$produto->setDescricao($_POST['descricao']);
+	$categoria->setId($_POST['categoria_id']);
+	$produto->setCategoria($categoria);
+	$produto->setIsbn($_POST['isbn']);
+	$produto->setTipoProduto($tipoProduto);	
+}
 
-
-$produto->setNome($_POST["nome"]);
-$produto->setPreco($_POST['preco']);
-$produto->setDescricao($_POST['descricao']);
-$categoria->setId($_POST['categoria_id']);
-$produto->setCategoria($categoria);
 
 if(array_key_exists('usado', $_POST)){
 
@@ -25,7 +39,7 @@ if(array_key_exists('usado', $_POST)){
 	$produto->setUsado("false");
 }
 
-if(salvaPedido($conexao, $produto)) {
+if($produtoDao->salvaPedido($produto)) {
 	$_SESSION['success'] = "Produto {$produto->getNome()}, valor: {$produto->getPreco()} salvo com sucesso!";
 	header("Location: incluirProdudoForm.php");
 	

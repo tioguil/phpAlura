@@ -1,13 +1,16 @@
 <?php require_once("head.php"); ?>
-<?php require_once("categoriaModel.php"); 
-require_once("logica_usuario.php");
-
-$lista = listaCategoria($conexao);
+<?php require_once("logica_usuario.php");
 
 verificaUsuario();
 
-$produto = array("nome" => "",  "descricao" => "", "preco" => "", "categoria_id" => "1");
-$usado = "";
+$categoria = new Categoria();
+$categoria->setId(1);
+
+$produto = new Produto("", "", "", $categoria, "");
+
+$categoriaDao = new CategoriaDao($conexao);
+
+$categorias = $categoriaDao->listaCategoria();
 
 ?>
 

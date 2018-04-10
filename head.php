@@ -1,4 +1,13 @@
- <?php include("mostraAlerta.php");
+ <?php 
+
+function carregaClass($nomeDaClasse){
+    require_once("class/".$nomeDaClasse.".php");
+}
+
+spl_autoload_register("carregaClass");
+
+require_once("conecta.php");
+ include("mostraAlerta.php");
  error_reporting(E_ALL ^ E_NOTICE);
   ?>
 <!doctype html>

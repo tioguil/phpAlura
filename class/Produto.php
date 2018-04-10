@@ -9,6 +9,8 @@ class Produto{
 	private $descricao;
 	private $categoria;
 	private $usado;
+	private $isbn;
+	private $tipoProduto;
 
 	function __construct(){
 		
@@ -19,6 +21,19 @@ class Produto{
 			$this->preco -= $this->preco * $valor;
 		}	
 			return $this->preco;
+	}
+
+	public function getIsbn(){
+		return $this->isbn;
+	}
+
+
+	public function temIsbn() {
+    	return $this instanceof Livro;
+	}
+
+	public function setTipoProduto($tipoProduto){
+		$this->tipoProduto = $tipoProduto;
 	}
 
 	public function setId($id){

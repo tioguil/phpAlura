@@ -1,9 +1,9 @@
 <?php require_once("head.php");
- require_once("produtoModel.php");
- require_once("categoriaModel.php");
 
 
-$produtos = listaProdutos($conexao);
+
+$produtoDao = new ProdutoDao($conexao);
+$produtos = $produtoDao->listaProdutos();
 ?>
 
 
@@ -18,6 +18,8 @@ $produtos = listaProdutos($conexao);
 				    <th>Preço com Desconto</th> 
 				    <th>Descrição</th> 
 				    <th>Categoria</th> 
+				    <th>Isbn</th>
+				    <th>Tipo Produto</th> 
 				    <th>Opções</th> 
 				 </tr>
 
@@ -30,6 +32,14 @@ $produtos = listaProdutos($conexao);
 						echo "<td>".$produto->precoComDesconto(0.3)."</td>";
 						echo "<td>".substr($produto->getDescricao(), 0, 60)."</td>";
 						echo "<td>".$produto->getCategoria()->getNome()."</td>";
+						echo "<td>".$produto->getIsbn()."</td>";
+						echo "<td>";
+
+								if ($produto->temIsbn()) {
+						            echo "ISBN: ".$produto->getIsbn();
+						        }
+
+						echo "</td>";
 						echo "<form action='remove.php' method='post'>
 								<input type='text' name='id' value='".$produto->getId()."' style='display:none'>
 
